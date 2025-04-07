@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Biblioteca 📚</h1>
+
+    <section>
+      <h2>Cadastrar Autor</h2>
+      <form id="autorForm">
+        <input type="text" id="nome" placeholder="Nome do Autor" required>
+        <input type="text" id="nacionalidade" placeholder="Nacionalidade" required>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Cadastrar Livro</h2>
+      <form id="livroForm">
+        <input type="text" id="titulo" placeholder="Título do Livro" required>
+        <input type="number" id="ano" placeholder="Ano de publicação" required>
+        <select id="autorId" required></select>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Autores Cadastrados</h2>
+      <ul id="listaAutores"></ul>
+    </section>
+
+    <section>
+      <h2>Livros Cadastrados</h2>
+      <ul id="listaLivros"></ul>
+    </section>
+  </div>
+
+  <!-- Modal para editar autor -->
+  <div id="modalAutor" class="modal hidden">
+    <div class="modal-content">
+      <h3>Editar Autor</h3>
+      <form id="formEditarAutor">
+        <input type="hidden" id="editAutorId">
+        <input type="text" id="editNome" placeholder="Nome">
+        <input type="text" id="editNacionalidade" placeholder="Nacionalidade">
+        <div class="modal-buttons">
+          <button type="submit">Salvar</button>
+          <button type="button" onclick="fecharModalAutor()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal para editar livro -->
+  <div id="modalLivro" class="modal hidden">
+    <div class="modal-content">
+      <h3>Editar Livro</h3>
+      <form id="formEditarLivro">
+        <input type="hidden" id="editLivroId">
+        <input type="text" id="editTitulo" placeholder="Título">
+        <input type="number" id="editAno" placeholder="Ano">
+        <select id="editAutorId"></select>
+        <div class="modal-buttons">
+          <button type="submit">Salvar</button>
+          <button type="button" onclick="fecharModalLivro()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

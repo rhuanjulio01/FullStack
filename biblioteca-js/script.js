@@ -1,6 +1,6 @@
 const API = 'http://localhost:3000';
 
-// CADASTRAR AUTOR
+
 document.getElementById('autorForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const nome = document.getElementById('nome').value;
@@ -14,11 +14,10 @@ document.getElementById('autorForm').addEventListener('submit', async (e) => {
 
     alert('Autor cadastrado!');
     carregarAutores();
-    preencherSelectAutores(); // <- ADICIONE AQUI
-document.getElementById('autorForm').reset(); // <- também pode adicionar para limpar o formulário
+    preencherSelectAutores();
+document.getElementById('autorForm').reset();
 });
 
-// CADASTRAR LIVRO
 document.getElementById('livroForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const titulo = document.getElementById('titulo').value;
@@ -36,7 +35,7 @@ document.getElementById('livroForm').addEventListener('submit', async (e) => {
     document.getElementById('livroForm').reset();
 });
 
-// LISTAR LIVROS
+
 async function carregarLivros() {
     const resposta = await fetch(`${API}/livros`);
     const livros = await resposta.json();
@@ -71,7 +70,6 @@ async function carregarLivros() {
     });
 }
 
-// DELETAR LIVRO
 async function deletarLivro(id) {
     if (confirm('Tem certeza que deseja deletar este livro?')) {
         await fetch(`${API}/livros/${id}`, { method: 'DELETE' });
@@ -79,13 +77,11 @@ async function deletarLivro(id) {
     }
 }
 
-// EDITAR LIVRO COM MODAL
 function editarLivro(livro) {
   document.getElementById('editLivroId').value = livro.id;
   document.getElementById('editTitulo').value = livro.titulo;
   document.getElementById('editAno').value = livro.ano;
 
-  // Carregar autores no select do modal
   fetch(`${API}/autores`)
       .then(res => res.json())
       .then(autores => {
@@ -101,7 +97,7 @@ function editarLivro(livro) {
               select.appendChild(option);
           });
 
-          // Mostrar modal
+        
           document.getElementById('modalLivro').classList.remove('hidden');
       });
 }
@@ -129,7 +125,7 @@ document.getElementById('formEditarLivro').addEventListener('submit', async (e) 
 });
 
 
-// LISTAR AUTORES
+
 async function carregarAutores() {
     const resposta = await fetch(`${API}/autores`);
     const autores = await resposta.json();
@@ -181,7 +177,7 @@ async function preencherSelectAutores() {
 
 
 
-// DELETAR AUTOR
+
 async function deletarAutor(id) {
     if (confirm('Tem certeza que deseja deletar este autor?')) {
         await fetch(`${API}/autores/${id}`, { method: 'DELETE' });
@@ -189,7 +185,7 @@ async function deletarAutor(id) {
     }
 }
 
-// EDITAR AUTOR
+
 function editarAutor(autor) {
     document.getElementById('editAutorId').value = autor.id;
     document.getElementById('editNome').value = autor.nome;
@@ -218,7 +214,7 @@ document.getElementById('formEditarAutor').addEventListener('submit', async (e) 
     carregarAutores();  
 });
 
-// CARREGAR DADOS INICIAIS
+
 carregarLivros();
 carregarAutores();
 preencherSelectAutores();

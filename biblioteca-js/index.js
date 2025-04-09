@@ -13,12 +13,10 @@ app.get('/', (req, res) => {
     res.send("API da Biblioteca rodando! 📚");
 });
 
-// Sincronizar banco
 sequelize.sync().then(() => {
     console.log("Banco sincronizado.");
 });
 
-// ROTAS AUTOR
 app.post('/autores', async (req, res) => {
     const autor = await Autor.create(req.body);
     res.json(autor);

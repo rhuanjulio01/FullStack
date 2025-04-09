@@ -10,6 +10,6 @@ const Livro = sequelize.define('Livro', {
     ano: DataTypes.INTEGER
 });
 
-Livro.belongsTo(Autor); // Chave estrangeira autorId será criada
+Livro.belongsTo(Autor);
 
 module.exports = Livro;

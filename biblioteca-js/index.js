@@ -52,7 +52,6 @@ app.delete('/autores/:id', async (req, res) => {
 });
 
 
-// ROTAS LIVRO
 app.post('/livros', async (req, res) => {
     const livro = await Livro.create(req.body);
     res.json(livro);
